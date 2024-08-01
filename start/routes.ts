@@ -8,4 +8,16 @@
 */
 
 import router from '@adonisjs/core/services/router'
-router.on('/').renderInertia('home', { version: 6 })
+const ClientController = () => import('#controllers/client_controller')
+
+// Home
+router.on('/').renderInertia('home')
+
+// Clients
+router.get('/clients', [ClientController, 'index'])
+router.post('/clients', [ClientController, 'store'])
+router.get('/clients/create', [ClientController, 'create'])
+
+router.get('/clients/:id', [ClientController, 'show'])
+router.put('/clients/:id', [ClientController, 'update'])
+router.delete('/clients/:id', [ClientController, 'destroy'])

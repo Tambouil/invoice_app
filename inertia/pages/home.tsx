@@ -1,16 +1,14 @@
-import { Head } from '@inertiajs/react'
-import { Button } from '~/components/ui/button'
+import { Head, Link } from '@inertiajs/react'
+import { buttonVariants } from '~/components/ui/button'
 
-export default function Home(props: { version: number }) {
+export default function Home() {
   return (
     <>
-      <Head title="Homepage" />
+      <Head title="Accueil" />
       <main className="container">
-        <h1>Home</h1>
-
-        <p>Version: {props.version}</p>
-
-        <Button>Button</Button>
+        <Link className={buttonVariants({ variant: 'default' })} href="/clients">
+          Ajouter un client
+        </Link>
       </main>
     </>
   )
