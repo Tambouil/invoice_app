@@ -16,7 +16,7 @@ import type ClientController from '#controllers/client_controller'
 export default function Clients({ clients }: InferPageProps<ClientController, 'index'>) {
   return (
     <>
-      <Head title="Accueil" />
+      <Head title="Mes clients" />
       <main className="container">
         <Link className={buttonVariants({ variant: 'default' })} href="/clients/create">
           Ajouter un client

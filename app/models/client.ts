@@ -1,5 +1,7 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
+import Quotation from '#models/quotation'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 
 export default class Client extends BaseModel {
   @column({ isPrimary: true })
@@ -25,4 +27,7 @@ export default class Client extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
+
+  @hasMany(() => Quotation)
+  declare quotations: HasMany<typeof Quotation>
 }

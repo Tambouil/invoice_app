@@ -2,7 +2,7 @@ import { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
 import { createClientValidator } from '#validators/client'
 import Client from '#models/client'
-import { AllClientsPresenter, SingleClientPresenter } from '#presenters/presenter'
+import { AllClientsPresenter, SingleClientPresenter } from '#presenters/client'
 
 @inject()
 export default class ClientController {
