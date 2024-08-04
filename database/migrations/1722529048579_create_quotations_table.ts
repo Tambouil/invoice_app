@@ -1,4 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
+import { QuotationStatus } from '#types/quotation'
 
 export default class extends BaseSchema {
   protected tableName = 'quotations'
@@ -12,9 +13,9 @@ export default class extends BaseSchema {
       table.dateTime('expiration_date')
       table.decimal('amount', 10, 2).notNullable()
       table
-        .enum('status', ['draft', 'sent', 'accepted', 'rejected', 'cancelled'])
+        .enum('status', Object.values(QuotationStatus))
         .notNullable()
-        .defaultTo('draft')
+        .defaultTo(QuotationStatus.DRAFT)
       table.string('note', 255)
 
       table.timestamp('created_at')

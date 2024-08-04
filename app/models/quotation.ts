@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import QuotationItem from '#models/quotation_item'
 import Client from '#models/client'
+import { QuotationStatus } from '#types/quotation'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 
@@ -25,7 +26,7 @@ export default class Quotation extends BaseModel {
   declare amount: number
 
   @column()
-  declare status: 'draft' | 'sent' | 'accepted' | 'rejected' | 'cancelled'
+  declare status: QuotationStatus
 
   @column()
   declare note: string

@@ -1,14 +1,17 @@
 import factory from '@adonisjs/lucid/factories'
 import Quotation from '#models/quotation'
 import { ClientFactory } from '#factories/client_factory'
+import { QuotationStatus } from '#types/quotation'
+
+let quotationNumberCounter = 1
 
 export const QuotationFactory = factory
   .define(Quotation, async ({ faker }) => {
-    const statusOptions = ['draft', 'sent', 'accepted', 'rejected', 'cancelled'] as const
-    const status = faker.helpers.arrayElement(statusOptions)
+    const statusopts = Object.values(QuotationStatus)
+    const status = faker.helpers.arrayElement(statusopts)
 
     return {
-      quotationNumber: faker.number.int({ min: 1, max: 100 }), // TODO: add a unique constraint on this field becuse a quotation can't have the same number
+      quotationNumber: quotationNumberCounter++,
       amount: faker.number.int({ min: 100, max: 10000 }),
       status: status,
       date: faker.date.past(),
