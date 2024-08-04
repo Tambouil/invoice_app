@@ -1,6 +1,7 @@
 import factory from '@adonisjs/lucid/factories'
 import Quotation from '#models/quotation'
 import { ClientFactory } from '#factories/client_factory'
+import { QuotationItemFactory } from '#factories/quotation_item_factory'
 import { QuotationStatus } from '#types/quotation'
 
 let quotationNumberCounter = 1
@@ -19,4 +20,5 @@ export const QuotationFactory = factory
     }
   })
   .relation('client', () => ClientFactory)
+  .relation('items', () => QuotationItemFactory)
   .build()
